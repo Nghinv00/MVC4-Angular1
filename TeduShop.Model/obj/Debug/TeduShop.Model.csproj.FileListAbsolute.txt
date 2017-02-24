@@ -1,0 +1,7 @@
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Model\bin\Debug\TeduShop.Model.dll.config
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Model\bin\Debug\TeduShop.Model.dll
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Model\bin\Debug\TeduShop.Model.pdb
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Model\bin\Debug\EntityFramework.dll
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Model\bin\Debug\EntityFramework.xml
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Model\obj\Debug\TeduShop.Model.dll
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Model\obj\Debug\TeduShop.Model.pdb

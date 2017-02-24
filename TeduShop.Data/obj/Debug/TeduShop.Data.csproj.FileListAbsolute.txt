@@ -1,0 +1,10 @@
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Data\bin\Debug\TeduShop.Data.dll.config
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Data\bin\Debug\TeduShop.Data.dll
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Data\bin\Debug\TeduShop.Data.pdb
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Data\bin\Debug\EntityFramework.dll
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Data\bin\Debug\EntityFramework.xml
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Data\obj\Debug\TeduShop.Data.dll
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Data\obj\Debug\TeduShop.Data.pdb
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Data\bin\Debug\TeduShop.Common.dll
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Data\bin\Debug\TeduShop.Common.pdb
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Data\obj\Debug\TeduShop.Data.csprojResolveAssemblyReference.cache
