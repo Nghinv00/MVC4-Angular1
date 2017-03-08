@@ -2,3 +2,4 @@ E:\WEB MVC\ProjectOnlineShop\TeduShop.Common\bin\Debug\TeduShop.Common.dll
 E:\WEB MVC\ProjectOnlineShop\TeduShop.Common\bin\Debug\TeduShop.Common.pdb
 E:\WEB MVC\ProjectOnlineShop\TeduShop.Common\obj\Debug\TeduShop.Common.dll
 E:\WEB MVC\ProjectOnlineShop\TeduShop.Common\obj\Debug\TeduShop.Common.pdb
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Common\obj\Debug\TeduShop.Common.csprojResolveAssemblyReference.cache

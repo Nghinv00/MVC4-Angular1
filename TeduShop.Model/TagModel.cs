@@ -11,13 +11,22 @@ namespace TeduShop.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class TagModel
     {
-    
-        public string ID { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
+
+        [Key]
+        [MaxLength(50)]
+        public string ID { set; get; }
+
+        [MaxLength(50)]
+        [Required]
+        public string Name { set; get; }
+
+        [MaxLength(50)]
+        [Required]
+        public string Type { set; get; }
 
     }
 }

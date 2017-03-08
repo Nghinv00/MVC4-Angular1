@@ -41,3 +41,5 @@ E:\WEB MVC\ProjectOnlineShop\TeduShop.UnitTest\bin\Debug\DotNetOpenAuth.OAuth.xm
 E:\WEB MVC\ProjectOnlineShop\TeduShop.UnitTest\bin\Debug\DotNetOpenAuth.OpenId.RelyingParty.xml
 E:\WEB MVC\ProjectOnlineShop\TeduShop.UnitTest\bin\Debug\DotNetOpenAuth.OpenId.xml
 E:\WEB MVC\ProjectOnlineShop\TeduShop.UnitTest\bin\Debug\TeduShop.UnitTest.dll.config
+E:\WEB MVC\ProjectOnlineShop\TeduShop.UnitTest\bin\Debug\Moq.dll
+E:\WEB MVC\ProjectOnlineShop\TeduShop.UnitTest\bin\Debug\Moq.xml

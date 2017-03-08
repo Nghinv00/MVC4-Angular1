@@ -39,12 +39,38 @@ namespace TeduShop.Service
 
             return result;
         }
-
-        public IList<PostCategoryModel> GetId(PostCategoryModel model)
+        public IList<PostCategoryModel> GetAllPage(int page, int pageSize)
         {
             IList<PostCategoryModel> result = new List<PostCategoryModel>();
 
-            result = Connect_Enttity.PostCategories.Where(x => x.ID == model.ID).Select(x => new PostCategoryModel
+            result = Connect_Enttity.PostCategories.Select(x => new PostCategoryModel
+            {
+                ID = x.ID,
+                Name = x.Name,
+                Alias = x.Alias,
+                Description = x.Description,
+                parentID = x.parentID,
+                DisplayOrder = x.DisplayOrder,
+                Image = x.Image,
+                MetaKeyword = x.MetaKeyword,
+                MetaDescription = x.MetaDescription,
+                CreateDate = (DateTime)(x.CreateDate),
+                CreateBy = x.CreateBy,
+                UpdatedDate = (DateTime)(x.UpdatedDate),
+                UpdatedBy = (x.UpdatedBy),
+                Status = x.Status,
+                HomeFlag = x.HomeFlag
+
+            }).OrderByDescending(x => x.CreateDate).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            return result;
+        }
+
+        public IList<PostCategoryModel> GetId(int id)
+        {
+            IList<PostCategoryModel> result = new List<PostCategoryModel>();
+
+            result = Connect_Enttity.PostCategories.Where(x => x.ID == id).Select(x => new PostCategoryModel
             {
                 ID = x.ID,
                 Name = x.Name,
@@ -67,13 +93,17 @@ namespace TeduShop.Service
             return result;
         }
 
+        public IEnumerable<PostCategoryModel> ReadPage(int page, int pageSize)
+        {
+            return GetAllPage(page,pageSize);
+        }
         public IEnumerable<PostCategoryModel> Read()
         {
             return GetAll();
         }
-        public IEnumerable<PostCategoryModel> ReadID(PostCategoryModel model)
+        public IEnumerable<PostCategoryModel> ReadID(int id)
         {
-            return GetId(model);
+            return GetId(id);
         }
         public void Deleteone(int Id)
         {
@@ -125,7 +155,8 @@ namespace TeduShop.Service
                 entity.UpdatedBy = model.UpdatedBy;
                 entity.Status = model.Status;
                 entity.HomeFlag = model.HomeFlag;
-                
+
+                Connect_Enttity.PostCategories.Add(entity);
                 Connect_Enttity.SaveChanges();
                 Dispose();
             }

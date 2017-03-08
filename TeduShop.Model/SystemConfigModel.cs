@@ -11,12 +11,20 @@ namespace TeduShop.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class SystemConfigModel
     {
-        public int ID { get; set; }
-        public string Code { get; set; }
-        public string ValueString { get; set; }
-        public Nullable<int> ValueInt { get; set; }
+        [Key]
+        public int ID { set; get; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Code { set; get; }
+
+        [MaxLength(50)]
+        public string ValueString { set; get; }
+
+        public int? ValueInt { set; get; }
     }
 }

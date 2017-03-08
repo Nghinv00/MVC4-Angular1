@@ -23,5 +23,6 @@ namespace TeduShop.Data
         public string Yahoo { get; set; }
         public string Facebook { get; set; }
         public Nullable<bool> Status { get; set; }
+        public Nullable<int> DisplayOrder { get; set; }
     }
 }

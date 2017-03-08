@@ -26,12 +26,27 @@ namespace TeduShop.Service
 
             return result;
         }
+        public IList<SystemConfigModel> GetAllPage(int page, int pageSize)
+        {
 
-        public IList<SystemConfigModel> GetId(SystemConfigModel model)
+            IList<SystemConfigModel> result = new List<SystemConfigModel>();
+            result = Connect_Enttity.SystemConfigs.Select(x => new SystemConfigModel
+            {
+                ID = x.ID,
+                Code = x.Code,
+                ValueString = x.ValueString,
+                ValueInt = x.ValueInt
+
+            }).OrderByDescending(x => x.ID).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            return result;
+        }
+
+        public IList<SystemConfigModel> GetId(int ID)
         {
             IList<SystemConfigModel> result = new List<SystemConfigModel>();
 
-            result = Connect_Enttity.SystemConfigs.Where(x => x.ID == model.ID).Select(x => new SystemConfigModel
+            result = Connect_Enttity.SystemConfigs.Where(x => x.ID == ID).Select(x => new SystemConfigModel
             {
                 ID = x.ID,
                 Code = x.Code,
@@ -42,14 +57,17 @@ namespace TeduShop.Service
 
             return result;
         }
-
+        public IEnumerable<SystemConfigModel> ReadPage(int page, int pageSize)
+        {
+            return GetAllPage(page,pageSize);
+        }
         public IEnumerable<SystemConfigModel> Read()
         {
             return GetAll();
         }
-        public IEnumerable<SystemConfigModel> ReadID(SystemConfigModel model)
+        public IEnumerable<SystemConfigModel> ReadID(int ID)
         {
-            return GetId(model);
+            return GetId(ID);
         }
         public void Deleteone(int Id)
         {
@@ -90,7 +108,8 @@ namespace TeduShop.Service
                 entity.Code = model.Code;
                 entity.ValueString = model.ValueString;
                 entity.ValueInt = model.ValueInt;
-                
+
+                Connect_Enttity.SystemConfigs.Add(entity);
                 Connect_Enttity.SaveChanges();
                 Dispose();
             }

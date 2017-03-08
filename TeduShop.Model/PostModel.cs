@@ -11,18 +11,27 @@ namespace TeduShop.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class PostModel
     {
-
+        [Key]
         public int ID { get; set; }
+        [Required]
+        [MaxLength(256)]
         public string Name { get; set; }
+        [Required]
+        [MaxLength(256)]
         public string Alias { get; set; }
         public Nullable<int> CategoryID { get; set; }
+        [MaxLength(256)]
         public string Image { get; set; }
+        [MaxLength(500)]
         public string Description { get; set; }
         public string Content { get; set; }
+        [MaxLength(500)]
         public string MetaKeyword { get; set; }
+        [MaxLength(500)]
         public string MetaDescription { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public string CreateBy { get; set; }

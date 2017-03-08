@@ -11,17 +11,37 @@ namespace TeduShop.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class SupportOnlineModel
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Department { get; set; }
-        public string Skype { get; set; }
-        public string Mobile { get; set; }
-        public string Email { get; set; }
-        public string Yahoo { get; set; }
-        public string Facebook { get; set; }
-        public Nullable<bool> Status { get; set; }
+        [Key]
+        public int ID { set; get; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Name { set; get; }
+
+        [MaxLength(50)]
+        public string Department { set; get; }
+
+        [MaxLength(50)]
+        public string Skype { set; get; }
+
+        [MaxLength(50)]
+        public string Mobile { set; get; }
+
+        [MaxLength(50)]
+        public string Email { set; get; }
+
+        [MaxLength(50)]
+        public string Yahoo { set; get; }
+
+        [MaxLength(50)]
+        public string Facebook { set; get; }
+
+        public bool Status { set; get; }
+
+        public int? DisplayOrder { set; get; }
     }
 }

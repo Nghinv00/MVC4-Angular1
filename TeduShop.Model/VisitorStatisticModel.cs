@@ -11,11 +11,17 @@ namespace TeduShop.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class VisitorStatisticModel
     {
-        public System.Guid ID { get; set; }
-        public System.DateTime VisitedDate { get; set; }
-        public string IPAddress { get; set; }
+        [Key]
+        public Guid ID { set; get; }
+
+        [Required]
+        public DateTime VisitedDate { set; get; }
+
+        [MaxLength(50)]
+        public string IPAddress { set; get; }
     }
 }

@@ -30,6 +30,7 @@ namespace TeduShop.Data
         public string PaymentMethod { get; set; }
         public string PaymentStatus { get; set; }
         public bool Status { get; set; }
+        public string CustomerId { get; set; }
     
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }

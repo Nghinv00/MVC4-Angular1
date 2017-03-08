@@ -11,11 +11,16 @@ namespace TeduShop.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class PostTagModel
     {
+        [Key]
         public int ID { get; set; }
+        [Key]
         public int PostID { get; set; }
+        [Key]
+        [MaxLength(50)]
         public string TagID { get; set; }
     
     }

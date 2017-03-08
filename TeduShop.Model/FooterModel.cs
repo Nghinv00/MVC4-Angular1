@@ -7,12 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
 namespace TeduShop.Model
 {
  
     public partial class FooterModel
     {
-        public byte[] ID { get; set; }
-        public string Content { get; set; }
+        [Key]
+        [MaxLength(50)]
+        public byte[] ID { set; get; }
+
+        [Required]
+        public string Content { set; get; }
     }
 }

@@ -11,22 +11,36 @@ namespace TeduShop.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class OrderModel
     {
- 
-    
+
+        [Key]
         public int ID { get; set; }
+        [Required]
+        [MaxLength(256)]
         public string CustomerName { get; set; }
+        [Required]
+        [MaxLength(256)]
         public string CustomerAddress { get; set; }
+        [Required]
+        [MaxLength(256)]
         public string CustomerEmail { get; set; }
+        [Required]
+        [MaxLength(256)]
         public string CustomerMobile { get; set; }
+        [Required]
+        [MaxLength(256)]
         public string CustomerMessage { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreateBy { get; set; }
+        [MaxLength(256)]
         public string PaymentMethod { get; set; }
         public string PaymentStatus { get; set; }
         public bool Status { get; set; }
+        [StringLength(128)]
+        public string CustomerId { get; set; }
     
 
     }

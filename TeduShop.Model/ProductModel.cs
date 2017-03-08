@@ -11,14 +11,21 @@ namespace TeduShop.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class ProductModel
     {
- 
+        [Key]
         public int ID { get; set; }
+        [Required]
+        [MaxLength(256)]
         public string Name { get; set; }
+        [Required]
+        [MaxLength(256)]
         public string Alias { get; set; }
+       // [Required]
         public Nullable<int> CategoryID { get; set; }
+        [MaxLength(256)]
         public string Image { get; set; }
         public string MoreImages { get; set; }
         public decimal Price { get; set; }
@@ -26,9 +33,12 @@ namespace TeduShop.Data
         public Nullable<int> Warranty { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }
+        [MaxLength(256)]
         public string MetaKeyword { get; set; }
+        [MaxLength(256)]
         public string MetaDescription { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
+        [MaxLength(256)]
         public string CreateBy { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }

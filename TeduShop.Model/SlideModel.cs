@@ -11,15 +11,30 @@ namespace TeduShop.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class SlideModel
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Image { get; set; }
-        public string URL { get; set; }
-        public Nullable<int> DisplayOrder { get; set; }
-        public bool Status { get; set; }
+        [Key]
+        public int ID { set; get; }
+
+        [Required]
+        [MaxLength(256)]
+        public string Name { set; get; }
+
+        [MaxLength(256)]
+        public string Description { set; get; }
+
+        [MaxLength(256)]
+        public string Image { set; get; }
+
+        [MaxLength(256)]
+        public string Url { set; get; }
+
+        public int? DisplayOrder { set; get; }
+
+        public bool Status { set; get; }
+
+        public string Content { set; get; }
     }
 }

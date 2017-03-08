@@ -21,5 +21,6 @@ namespace TeduShop.Data
         public string URL { get; set; }
         public Nullable<int> DisplayOrder { get; set; }
         public bool Status { get; set; }
+        public string Content { get; set; }
     }
 }
