@@ -9,12 +9,12 @@
     {
         $stateProvider.state("product_categories", {
             url: "/product_categories",
-            templateUrl: "/app/components/product_categories/product_categoriesListView.html",
-            controller: "product_categoriesListController"
+            templateUrl: "/app/components/product_categories/productcategoryListView.html",
+            controller: "productCategoryListController"
         }).state("product_categories_add", {
-            url: "/product_categoryes_add",
-            templateUrl: "/app/components/product_categories/product_categoriesAddView.html",
-            controller: "product_categoriesAddController"
+            url: "/product_categories_add",
+            templateUrl: "/app/components/product_categories/productcategoryAddView.html",
+            controller: "productcategoryAddController"
         });
     }
 })();

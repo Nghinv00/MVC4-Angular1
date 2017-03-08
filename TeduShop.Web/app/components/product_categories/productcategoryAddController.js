@@ -1,9 +1,9 @@
 ﻿/// <reference path="/Assets/admin/libs/angular/angular.js" />
 
 (function (app) {
-    app.controller("product_categoriesAddController", product_categoriesAddController);
+    app.controller("productcategoryAddController", productcategoryAddController);
 
-    function product_categoriesAddController() {
+    function productcategoryAddController() {
 
     }
 })(angular.module("tedushop.product_categories"));

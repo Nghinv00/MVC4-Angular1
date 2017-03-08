@@ -227,6 +227,13 @@
     <Content Include="app\components\products\productEditView.html" />
     <Content Include="app\components\products\productListController.js" />
     <Content Include="app\components\products\productListView.html" />
+    <Content Include="app\components\product_categories\productcategoryListController.js" />
+    <Content Include="app\components\product_categories\productcategories.module.js" />
+    <Content Include="app\components\product_categories\productcategoryAddController.js" />
+    <Content Include="app\components\product_categories\productcategoryAddView.html" />
+    <Content Include="app\components\product_categories\productcategoryEditController.js" />
+    <Content Include="app\components\product_categories\productcategoryEditView.html" />
+    <Content Include="app\components\product_categories\productcategoryListView.html" />
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="Assets\admin\css\AdminLTE.css" />
     <Content Include="Assets\admin\css\AdminLTE.min.css" />
@@ -5360,7 +5367,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\components\orders\" />
-    <Folder Include="app\components\product_categories\" />
     <Folder Include="app\components\roles\" />
     <Folder Include="app\components\users\" />
     <Folder Include="app\shared\footer\" />
