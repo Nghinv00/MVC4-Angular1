@@ -13,7 +13,42 @@ namespace TeduShop.Service
     {
         public ShopOnlineEntities Connect_Enttity = new ShopOnlineEntities();
 
-        public IList<PostCategoryModel> GetAll()
+        public IList<PostCategoryModel> GetAll(string keyword)
+        {
+            IList<PostCategoryModel> result = new List<PostCategoryModel>();
+
+            result = Connect_Enttity.PostCategories.Select(x => new PostCategoryModel
+            {
+                ID = x.ID,
+                Name = x.Name,
+                Alias = x.Alias,
+                Description = x.Description,
+                parentID = x.parentID,
+                DisplayOrder = x.DisplayOrder,
+                Image = x.Image,
+                MetaKeyword = x.MetaKeyword,
+                MetaDescription = x.MetaDescription,
+                CreateDate = (DateTime)(x.CreateDate),
+                CreateBy = x.CreateBy,
+                UpdatedDate = (DateTime)(x.UpdatedDate),
+                UpdatedBy = (x.UpdatedBy),
+                Status = x.Status,
+                HomeFlag = x.HomeFlag
+
+            }).Where(x => x.Name.Contains(keyword)).ToList();
+
+            if(!string.IsNullOrEmpty(keyword))
+            {
+                result.Where(x => x.Name.Contains(keyword)).ToList();
+            }
+            else
+            {
+                result.ToList();
+            }
+
+            return result;
+        }
+        public IList<PostCategoryModel> GetAllPage(string keyword, int page, int pageSize)
         {
             IList<PostCategoryModel> result = new List<PostCategoryModel>();
 
@@ -37,31 +72,14 @@ namespace TeduShop.Service
 
             }).ToList();
 
-            return result;
-        }
-        public IList<PostCategoryModel> GetAllPage(int page, int pageSize)
-        {
-            IList<PostCategoryModel> result = new List<PostCategoryModel>();
-
-            result = Connect_Enttity.PostCategories.Select(x => new PostCategoryModel
+            if(!string.IsNullOrEmpty(keyword))
             {
-                ID = x.ID,
-                Name = x.Name,
-                Alias = x.Alias,
-                Description = x.Description,
-                parentID = x.parentID,
-                DisplayOrder = x.DisplayOrder,
-                Image = x.Image,
-                MetaKeyword = x.MetaKeyword,
-                MetaDescription = x.MetaDescription,
-                CreateDate = (DateTime)(x.CreateDate),
-                CreateBy = x.CreateBy,
-                UpdatedDate = (DateTime)(x.UpdatedDate),
-                UpdatedBy = (x.UpdatedBy),
-                Status = x.Status,
-                HomeFlag = x.HomeFlag
-
-            }).OrderByDescending(x => x.CreateDate).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                result.Where(x => x.Name.Contains(keyword)).OrderByDescending(x => x.CreateDate).Skip((page - 1) * pageSize).Take(pageSize);
+            }
+            else
+            {
+                result.OrderByDescending(x => x.CreateDate).Skip((page - 1) * pageSize).Take(pageSize);
+            }
 
             return result;
         }
@@ -93,13 +111,13 @@ namespace TeduShop.Service
             return result;
         }
 
-        public IEnumerable<PostCategoryModel> ReadPage(int page, int pageSize)
+        public IEnumerable<PostCategoryModel> ReadPage(string keyword,int page, int pageSize)
         {
-            return GetAllPage(page,pageSize);
+            return GetAllPage(keyword,page, pageSize);
         }
-        public IEnumerable<PostCategoryModel> Read()
+        public IEnumerable<PostCategoryModel> Read(string keyword)
         {
-            return GetAll();
+            return GetAll(keyword);
         }
         public IEnumerable<PostCategoryModel> ReadID(int id)
         {

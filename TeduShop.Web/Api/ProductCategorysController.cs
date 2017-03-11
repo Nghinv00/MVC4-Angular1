@@ -19,36 +19,26 @@ namespace TeduShop.Web.API
         // GET api/SystemConfigs
         [ActionName("getall")]
         [HttpGet]
-        public HttpResponseMessage getAll(HttpRequestMessage request)
+        public HttpResponseMessage getAll(HttpRequestMessage request, string keyword)
         {
 
             return CreateHttpResponse(request, () =>
             {
-                var model = ProductCategoryService.Read();
+                var model = ProductCategoryService.Read(keyword);
                 var response = request.CreateResponse(HttpStatusCode.OK, model);
                 return response;
             });
         }
 
-        [ActionName("getallpage")]
+        [ActionName("getallparent")]
         [HttpGet]
-        public HttpResponseMessage getAllPage(HttpRequestMessage request, int page, int pageSize = 20)
+        public HttpResponseMessage getAllParent(HttpRequestMessage request)
         {
+
             return CreateHttpResponse(request, () =>
             {
-                int totalRow = 0;
-                var responseData = ProductCategoryService.ReadPage(page, pageSize);
-
-                totalRow = ProductCategoryService.GetAll().Count;
-
-                var paginationSet = new PaginationSet<ProductCategoryModel>()
-                {
-                    Items = responseData,
-                    Page = page,
-                    TotalCount = totalRow,
-                    TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
-                };
-                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+                var model = ProductCategoryService.ReadParent();
+                var response = request.CreateResponse(HttpStatusCode.OK, model);
                 return response;
             });
         }
@@ -66,6 +56,31 @@ namespace TeduShop.Web.API
                 return response;
             });
         }
+
+        [ActionName("getallpage")]
+        [HttpGet]
+        public HttpResponseMessage getAllPage(HttpRequestMessage request,string keyword, int page, int pageSize = 20)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                int totalRow = 0;
+                var responseData = ProductCategoryService.ReadPage(keyword,page, pageSize);
+
+                totalRow = ProductCategoryService.GetAll(keyword).Count;
+
+                var paginationSet = new PaginationSet<ProductCategoryModel>()
+                {
+                    Items = responseData,
+                    Page = page,
+                    TotalCount = totalRow,
+                    TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
+                };
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+                return response;
+            });
+        }
+
+        
 
         [ActionName("create")]
         [HttpPost]

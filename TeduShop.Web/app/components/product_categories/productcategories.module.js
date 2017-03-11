@@ -7,14 +7,21 @@
 
     function config($stateProvider, $urlRouterProvider)
     {
-        $stateProvider.state("product_categories", {
+        $stateProvider
+            .state("product_categories", {
             url: "/product_categories",
             templateUrl: "/app/components/product_categories/productcategoryListView.html",
             controller: "productCategoryListController"
-        }).state("product_categories_add", {
-            url: "/product_categories_add",
+        })
+            .state("add_product_category", {
+            url: "/add_product_category",
             templateUrl: "/app/components/product_categories/productcategoryAddView.html",
-            controller: "productcategoryAddController"
+            controller: "productCategoryAddController"
+            })
+            .state("edit_product_category", {
+            url: "/edit_product_category/:id",
+            templateUrl: "/app/components/product_categories/productcategoryEditView.html",
+            controller: "productCategoryEditController"
         });
     }
 })();
