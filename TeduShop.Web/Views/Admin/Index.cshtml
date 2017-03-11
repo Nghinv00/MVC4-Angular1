@@ -14,11 +14,15 @@
     <!-- Bootstrap 3.3.5 -->
     <link href="/Assets/admin/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="/Assets/admin/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">*@
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    @*<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">*@
     <!-- Theme style -->
+    <!--toastr-->
+    <link href="~/Assets/admin/libs/toastr/toastr.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/Assets/admin/css/AdminLTE.min.css">
+    <link href="/Assets/admin/css/custom.css" rel="stylesheet" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/Assets/admin/css/skins/_all-skins.min.css">
@@ -216,26 +220,17 @@
                             <li><a ui-sref="product_add"><i class="fa fa-circle-o"></i> Product Add</a></li>
                         </ul>
                     </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>Products_categories</span> <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a ui-sref="product_categories"><i class="fa fa-circle-o"></i> Product_categories</a></li>
-                            <li><a ui-sref="product_categories_add"><i class="fa fa-circle-o"></i> Product_categories Add</a></li>
-                        </ul>
-                    </li>
+                    
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-files-o"></i>
-                            <span>Layout Options</span>
+                            <span>Sản Phẩm</span>
                             <span class="label label-primary pull-right">4</span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                            <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                            <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                            <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+                            <li><a ui-sref="product_categories"><i class="fa fa-circle-o"></i> Danh mục</a></li>
+                            <li><a ui-sref="products"><i class="fa fa-circle-o"></i> Sản Phẩm</a></li>
+                           
                         </ul>
                     </li>
                     <li>
@@ -536,18 +531,28 @@
     <!--begin embed angular js-->
     <script src="/Assets/admin/libs/angular/angular.js"></script>
     <script src="/Assets/admin/libs/angular-ui-router/release/angular-ui-router.js"></script>
-
+    <!--toastr-->
+    <script src="/Assets/admin/libs/toastr/toastr.min.js"></script>
     <script src="/app/shared/module/tedushop.common.js"></script>
+
     <script src="/app/components/products/products.module.js"></script>
     <script src="/app/app.js"></script>
+    <script src="/app/shared/filter/statusFilter.js"></script>
+    <script src="/app/shared/services/apiService.js"></script>
+    <script src="/app/shared/directives/pagerDirective.js"></script>
+    <script src="/app/shared/services/notificationService.js"></script>
+    <script src="/app/shared/services/commonService.js"></script>
+
     <script src="/app/components/products/productAddController.js"></script>
     <script src="/app/components/products/productListController.js"></script>
     <script src="/app/components/home/homeController.js"></script>
 
     <!--product_categories-->
-    <script src="/app/components/product_categories/product_categories.module.js"></script>
-    <script src="/app/components/product_categories/product_categoriesAddController.js"></script>
-    <script src="/app/components/product_categories/product_categoriesListController.js"></script>
+    <script src="/app/components/product_categories/productcategories.module.js"></script>
+    <script src="/app/components/product_categories/productcategoryAddController.js"></script>
+    <script src="/app/components/product_categories/productcategoryListController.js"></script>
+    <script src="/app/components/product_categories/productcategoryEditController.js"></script>
+
 </body>
 </html>
 
