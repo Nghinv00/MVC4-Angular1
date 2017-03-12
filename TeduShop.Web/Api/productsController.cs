@@ -20,12 +20,12 @@ namespace TeduShop.Web.API
         // GET api/SystemConfigs
         [ActionName("getall")]
         [HttpGet]
-        public HttpResponseMessage getAll(HttpRequestMessage request)
+        public HttpResponseMessage getAll(HttpRequestMessage request, string keyword)
         {
 
             return CreateHttpResponse(request, () =>
             {
-                var model = ProductService.Read();
+                var model = ProductService.Read(keyword);
                 var response = request.CreateResponse(HttpStatusCode.OK, model);
                 return response;
             });
@@ -33,14 +33,14 @@ namespace TeduShop.Web.API
 
         [ActionName("getallpage")]
         [HttpGet]
-        public HttpResponseMessage getAllPage(HttpRequestMessage request,string search, int page, int pageSize = 20)
+        public HttpResponseMessage getAllPage(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
         {
             return CreateHttpResponse(request, () =>
             {
                 int totalRow = 0;
-                var responseData = ProductService.ReadPage(search,page, pageSize);
+                var responseData = ProductService.ReadPage(keyword, page, pageSize);
 
-                totalRow = ProductService.GetAll().Count;
+                totalRow = ProductService.GetAll(keyword).Count;
 
                 var paginationSet = new PaginationSet<ProductModel>()
                 {

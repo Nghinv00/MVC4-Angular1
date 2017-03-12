@@ -14,7 +14,7 @@ namespace TeduShop.Service
     {
         public ShopOnlineEntities Connect_Enttity = new ShopOnlineEntities();
 
-        public IList<ProductModel> GetAll()
+        public IList<ProductModel> GetAll(string keyword)
         {
             IList<ProductModel> result = new List<ProductModel>();
 
@@ -44,9 +44,19 @@ namespace TeduShop.Service
 
             }).ToList();
 
-            return result;
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                result = result.Where(x => x.Name.Contains(keyword)).ToList();
+            }
+            else
+            {
+                result = result.ToList();
+            }
+
+            return result.ToList();
+
         }
-        public IList<ProductModel> GetAllPage(string search, int page, int pageSize)
+        public IList<ProductModel> GetAllPage(string keyword, int page, int pageSize)
         {
             IList<ProductModel> result = new List<ProductModel>();
 
@@ -74,9 +84,18 @@ namespace TeduShop.Service
                 HotFlag = x.HotFlag,
                 ViewCount = x.ViewCount
 
-            }).Where(x=>x.Name.Contains(search)).OrderByDescending(x => x.CreateDate).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            }).ToList();
 
-            return result;
+            if (!string.IsNullOrEmpty(keyword) )
+            {
+                result = result.Where(x => x.Name.Contains(keyword)).OrderByDescending(x => x.CreateDate).Skip((page) * pageSize).Take(pageSize).ToList();
+            }
+            else
+            {
+                result = result.OrderByDescending(x => x.CreateDate).Skip((page) * pageSize).Take(pageSize).ToList();
+            }
+
+            return result.ToList();
         }
 
         public IList<ProductModel> GetId(int id)
@@ -112,13 +131,13 @@ namespace TeduShop.Service
             return result;
         }
 
-        public IEnumerable<ProductModel> ReadPage(string search,int page, int pageSize)
+        public IEnumerable<ProductModel> ReadPage(string keyword,int page, int pageSize)
         {
-            return GetAllPage(search,page, pageSize);
+           return GetAllPage(keyword, page, pageSize);
         }
-        public IEnumerable<ProductModel> Read()
+        public IEnumerable<ProductModel> Read(string keyword)
         {
-            return GetAll();
+            return GetAll(keyword);
         }
         public IEnumerable<ProductModel> ReadID(int id)
         {

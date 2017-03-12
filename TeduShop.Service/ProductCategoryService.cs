@@ -34,7 +34,7 @@ namespace TeduShop.Service
 
             //  result = Connect_Enttity.ProductCategoryModel.ToList();
 
-            if (!string.IsNullOrEmpty(keyword))
+            if (!string.IsNullOrEmpty(keyword) )
             {
                 result = result.Where(x => x.Name.Contains(keyword)).ToList();
             }
@@ -107,7 +107,7 @@ namespace TeduShop.Service
                 result = result.OrderByDescending(x => x.CreateDate).Skip((page) * pageSize).Take(pageSize).ToList(); ;
             }
 
-            return result;
+            return result.ToList();
         }
 
 
@@ -167,7 +167,7 @@ namespace TeduShop.Service
             {
                 Connect_Enttity.ProductCategories.Remove(data);
                 Connect_Enttity.SaveChanges();
-                Dispose();
+                //Dispose();
             }
         }
 
@@ -181,7 +181,7 @@ namespace TeduShop.Service
                     Connect_Enttity.ProductCategories.Remove(data);
                     Connect_Enttity.SaveChanges();
                 }
-                Dispose();
+                //Dispose();
             }
         }
 
