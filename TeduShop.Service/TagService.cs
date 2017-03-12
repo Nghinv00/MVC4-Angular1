@@ -67,7 +67,7 @@ namespace TeduShop.Service
         {
             return GetId(ID);
         }
-        public void Deleteone(string Id)
+        public  void Deleteone(string Id)
         {
 
             var data = (from c in Connect_Enttity.Tags where c.ID == Id select c).FirstOrDefault();
@@ -131,5 +131,7 @@ namespace TeduShop.Service
         {
             Connect_Enttity.Dispose();
         }
+
+       
     }
 }

@@ -158,6 +158,7 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="ShopOnlineModel.Product">
         <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Alias" ColumnName="Alias" />

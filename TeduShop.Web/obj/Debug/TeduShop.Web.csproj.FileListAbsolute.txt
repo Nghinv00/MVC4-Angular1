@@ -96,3 +96,6 @@ E:\WEB MVC\ProjectOnlineShop\TeduShop.Web\bin\TeduShop.Common.pdb
 E:\WEB MVC\ProjectOnlineShop\TeduShop.Web\bin\TeduShop.Data.pdb
 E:\WEB MVC\ProjectOnlineShop\TeduShop.Web\bin\TeduShop.Model.pdb
 E:\WEB MVC\ProjectOnlineShop\TeduShop.Web\bin\TeduShop.Service.pdb
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Web\bin\CKFinder.dll
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Web\bin\Moq.dll
+E:\WEB MVC\ProjectOnlineShop\TeduShop.Web\bin\Moq.xml

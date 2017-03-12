@@ -57,20 +57,20 @@
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">Giá</label>
                     <div class="col-sm-10">
-                        <input type="number" value="0" class="form-control" required name="price" ng-model="product.DisplayOrder">
+                        <input type="number" value="0" class="form-control" required name="price" ng-model="product.Price">
                         <span ng-show="frmAddproduct.price.$invalid" class="has-error">Phải nhập giá</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">Bảo hành</label>
                     <div class="col-sm-10">
-                        <input type="number" value="0" class="form-control"  name="warranty" ng-model="product.DisplayOrder">(tháng)
+                        <input type="number" value="0" class="form-control" name="warranty" ng-model="product.Warranty">(tháng)
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">Giá KM</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control"  name="promotionPrice" ng-model="product.DisplayOrder">
+                        <input type="number" class="form-control" name="promotionPrice" ng-model="product.Promotion">
                     </div>
                 </div>
                 <div class="form-group">
@@ -78,12 +78,19 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="image" ng-maxlength="500" ng-model="product.Image">
                         <span ng-show="frmAddproduct.image.$error.maxlength" class="has-error">Images chỉ được 500 ký tự</span>
+                        <button class="btn btn-default" id="imageChoose" type="button" ng-click="chooseImages()">chọn ảnh</button>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">Mô tả sản phẩm</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" name="content" ckeditor="ckeditorOptions"  ng-model="product.MetaDescription"> </textarea>
+                        <textarea class="form-control" name="content" ckeditor="ckeditorOptions" ng-model="product.Content"> </textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Tag</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="tags" ng-maxlength="250" ng-model="product.Tags">
                     </div>
                 </div>
                 <div class="form-group">
@@ -127,3 +134,6 @@
         </form>
     </div><!-- /.box -->
 </section><!-- /.content -->
+
+<!--Insert Custom Js get images of Ckfinder and blog of ckeditor-->
+<script src="/app/components/products/productcustom.js"></script>

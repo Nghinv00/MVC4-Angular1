@@ -183,6 +183,7 @@
     <Property Name="ViewCount" Type="Int32" />
     <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Products_ProductCategories" FromRole="Products" ToRole="ProductCategories" />
     <NavigationProperty Name="ProductTags" Relationship="Self.FK_ProductTags_Products" FromRole="Products" ToRole="ProductTags" />
+    <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ProductTag">
     <Key>

@@ -169,6 +169,7 @@
     <Property Name="HomeFlag" Type="bit" />
     <Property Name="HotFlag" Type="bit" />
     <Property Name="ViewCount" Type="int" />
+    <Property Name="Tags" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="ProductTags">
     <Key>

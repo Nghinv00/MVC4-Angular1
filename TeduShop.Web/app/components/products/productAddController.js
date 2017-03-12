@@ -20,10 +20,6 @@
             $scope.product.Alias = commonService.getSeoTitle($scope.product.Name)
         }
 
-        $scope.ckeditorOptions = {
-            languague: 'vi',
-            height: '200px'
-        }
 
         function AddProduct() {
             apiService.post('/api/products/create', $scope.product,
@@ -42,6 +38,19 @@
                 console.log('can not listen parent');
             });
         }
+
+        $scope.ckeditorOptions = {
+            languague: 'vi',
+            height: '200px'
+        }
+
+        //$scope.chooseImages = function () {
+        //    var finder = new CKFinder();
+        //    finder.selectActionFunction = function (fileUrl) {
+        //        $scope.product.Image = fileUrl;
+        //    }
+        //    finder.popup();
+        //}
 
         loadProductCategory();
     }

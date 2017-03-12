@@ -174,6 +174,7 @@
           <Property Name="HomeFlag" Type="bit" />
           <Property Name="HotFlag" Type="bit" />
           <Property Name="ViewCount" Type="int" />
+          <Property Name="Tags" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ProductTags">
           <Key>
@@ -629,6 +630,7 @@
           <Property Name="ViewCount" Type="Int32" />
           <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Products_ProductCategories" FromRole="Products" ToRole="ProductCategories" />
           <NavigationProperty Name="ProductTags" Relationship="Self.FK_ProductTags_Products" FromRole="Products" ToRole="ProductTags" />
+          <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ProductTag">
           <Key>
@@ -1074,6 +1076,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="ShopOnlineModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Alias" ColumnName="Alias" />

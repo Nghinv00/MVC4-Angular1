@@ -46,6 +46,7 @@ namespace TeduShop.Data
         public Nullable<bool> HomeFlag { get; set; }
         public Nullable<bool> HotFlag { get; set; }
         public Nullable<int> ViewCount { get; set; }
+        public string Tags { get; set; }
     
     }
 }

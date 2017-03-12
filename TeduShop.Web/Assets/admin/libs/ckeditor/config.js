@@ -10,17 +10,17 @@ CKEDITOR.editorConfig = function (config) {
 
     config.enterMode = CKEDITOR.ENTER_BR;
     config.toolbar = 'Full';
-    config.filebrowserBrowseUrl = '/Content/ckfinder/ckfinder.html';
-    config.filebrowserImageBrowseUrl = '/Content/ckfinder/ckfinder.html?type=Images';
-    config.filebrowserFlashBrowseUrl = '/Content/ckfinder/ckfinder.html?type=Flash';
-    config.filebrowserUploadUrl = '/Content/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files';
-    config.filebrowserImageUploadUrl = '/Content/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images';
-    config.filebrowserFlashUploadUrl = '/Content/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash';
+    config.filebrowserBrowseUrl = '/Assets/admin/libs/ckfinder/ckfinder.html';
+    config.filebrowserImageBrowseUrl = '/Assets/admin/libs/ckfinder/ckfinder.html?type=Images';
+    config.filebrowserFlashBrowseUrl = '/Assets/admin/libs/ckfinder/ckfinder.html?type=Flash';
+    config.filebrowserUploadUrl = '/Assets/admin/libs/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files';
+    config.filebrowserImageUploadUrl = '/Assets/admin/libs/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images';
+    config.filebrowserFlashUploadUrl = '/Assets/admin/libs/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash';
     config.filebrowserWindowWidth = '1000';
     config.filebrowserWindowHeight = '700';
 
     config.extraPlugins = 'widget,lineutils,fontawesome';
-    config.contentsCss = '/Content/ckeditor/plugins/fontawesome/font-awesome/css/font-awesome.min.css';
+    config.contentsCss = '/Assets/admin/libs/ckeditor/plugins/fontawesome/font-awesome/css/font-awesome.min.css';
     config.allowedContent = true;
 
    // config.scayt_autoStartup = false;
