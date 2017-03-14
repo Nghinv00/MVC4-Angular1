@@ -233,6 +233,7 @@
     <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="C_ID" Type="int" />
   </EntityType>
   <EntityType Name="VisitorStatistics">
     <Key>

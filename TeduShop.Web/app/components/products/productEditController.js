@@ -13,7 +13,7 @@
         $scope.loadProductCategory = loadProductCategory;
         $scope.loadProductDetail = loadProductDetail;
         $scope.GetSeoTitle = GetSeoTitle;
-
+        $scope.moreImages = [];
         
 
         function GetSeoTitle() {
@@ -23,12 +23,14 @@
         function loadProductDetail() {
             apiService.get('/api/products/getbyid/' + $stateParams.id, null, function (result) {
                 $scope.product = result.data[0];
+                $scope.moreImages = JSON.parse($scope.product.MoreImages)
             }, function (error) {
                 notificationService.displayError(error.data);
             })
         }
 
         function UpdateProduct() {
+            $scope.product.MoreImages = JSON.stringify($scope.moreImages)
             apiService.put('/api/products/update', $scope.product,
                 function (result) {
                     notificationService.displaySuccess(result.config.data.Name + ' đã được cập nhật.');
@@ -51,16 +53,29 @@
             height: '200px'
         }
 
-        //$scope.chooseImages = function () {
-        //    var finder = new CKFinder();
-        //    finder.selectActionFunction = function (fileUrl) {
-        //        $scope.product.Image = fileUrl;
-        //    }
-        //    finder.popup();
-        //}
+        $scope.chooseImages = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.$apply(function () {
+                    $scope.product.Image = fileUrl;
+                })
+            }
+            finder.popup();
+        }
 
-        
         loadProductCategory();
         loadProductDetail();
+
+        $scope.chooseMoreImages = function () {
+            if ($scope.moreImages === null)
+                $scope.moreImages = []
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.$apply(function () {
+                    $scope.moreImages.push(fileUrl);
+                })
+            }
+            finder.popup();
+        }
     }
 })(angular.module("tedushop.products"));

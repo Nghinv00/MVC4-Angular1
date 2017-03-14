@@ -19,7 +19,8 @@ namespace TeduShop.Service
             {
                 ID = x.ID,
                 Name = x.Name,
-                Type = x.Type
+                Type = x.Type,
+                C_ID = x.C_ID
 
             }).ToList();
 
@@ -33,7 +34,8 @@ namespace TeduShop.Service
             {
                 ID = x.ID,
                 Name = x.Name,
-                Type = x.Type
+                Type = x.Type,
+                C_ID = x.C_ID
 
             }).OrderByDescending(x => x.Name).Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
@@ -48,7 +50,8 @@ namespace TeduShop.Service
             {
                 ID = x.ID,
                 Name = x.Name,
-                Type = x.Type
+                Type = x.Type,
+                C_ID = x.C_ID
 
             }).ToList();
 

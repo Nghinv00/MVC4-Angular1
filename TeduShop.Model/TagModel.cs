@@ -27,6 +27,7 @@ namespace TeduShop.Data
         [MaxLength(50)]
         [Required]
         public string Type { set; get; }
+        public Nullable<int> C_ID { get; set; }
 
     }
 }

@@ -16,10 +16,10 @@ namespace TeduShop.Data
     {
         public string ID { get; set; }
         public string Name { get; set; }
+        public string Alias { get; set; }
         public string Content { get; set; }
         public string MetaKeyword { get; set; }
         public string MetaDescription { get; set; }
         public bool Status { get; set; }
-        public string Alias { get; set; }
     }
 }

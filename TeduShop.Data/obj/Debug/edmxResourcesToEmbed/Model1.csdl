@@ -45,9 +45,9 @@
     <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ProductID" Type="Int32" Nullable="false" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
     <NavigationProperty Name="ProductCategory" Relationship="Self.FK_OrderDetails_ProductCategories" FromRole="OrderDetails" ToRole="ProductCategories" />
-    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -64,8 +64,8 @@
     <Property Name="PaymentMethod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Status" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
     <Property Name="CustomerId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
   </EntityType>
   <EntityType Name="Page">
     <Key>
@@ -73,11 +73,11 @@
     </Key>
     <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Alias" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MetaKeyword" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="MetaDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Boolean" Nullable="false" />
-    <Property Name="Alias" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="PostCategory">
     <Key>
@@ -181,9 +181,9 @@
     <Property Name="HomeFlag" Type="Boolean" />
     <Property Name="HotFlag" Type="Boolean" />
     <Property Name="ViewCount" Type="Int32" />
+    <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Products_ProductCategories" FromRole="Products" ToRole="ProductCategories" />
     <NavigationProperty Name="ProductTags" Relationship="Self.FK_ProductTags_Products" FromRole="Products" ToRole="ProductTags" />
-    <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ProductTag">
     <Key>
@@ -249,6 +249,7 @@
     <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="C_ID" Type="Int32" />
     <NavigationProperty Name="PostTags" Relationship="Self.FK_PostTags_Tags" FromRole="Tags" ToRole="PostTags" />
     <NavigationProperty Name="ProductTags" Relationship="Self.FK_ProductTags_Tags" FromRole="Tags" ToRole="ProductTags" />
   </EntityType>

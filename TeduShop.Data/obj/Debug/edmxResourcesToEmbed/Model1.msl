@@ -43,17 +43,16 @@
     <EntitySetMapping Name="OrderDetails">
       <EntityTypeMapping TypeName="ShopOnlineModel.OrderDetail">
         <MappingFragment StoreEntitySet="OrderDetails">
-          <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="ShopOnlineModel.Order">
         <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
           <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
@@ -65,15 +64,16 @@
           <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
           <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Pages">
       <EntityTypeMapping TypeName="ShopOnlineModel.Page">
         <MappingFragment StoreEntitySet="Pages">
-          <ScalarProperty Name="Alias" ColumnName="Alias" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
           <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
           <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
@@ -158,7 +158,6 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="ShopOnlineModel.Product">
         <MappingFragment StoreEntitySet="Products">
-          <ScalarProperty Name="Tags" ColumnName="Tags" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Alias" ColumnName="Alias" />
@@ -180,6 +179,7 @@
           <ScalarProperty Name="HomeFlag" ColumnName="HomeFlag" />
           <ScalarProperty Name="HotFlag" ColumnName="HotFlag" />
           <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -195,7 +195,6 @@
     <EntitySetMapping Name="Slides">
       <EntityTypeMapping TypeName="ShopOnlineModel.Slide">
         <MappingFragment StoreEntitySet="Slides">
-          <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -203,13 +202,13 @@
           <ScalarProperty Name="URL" ColumnName="URL" />
           <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SupportOnlines">
       <EntityTypeMapping TypeName="ShopOnlineModel.SupportOnline">
         <MappingFragment StoreEntitySet="SupportOnlines">
-          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Department" ColumnName="Department" />
@@ -219,6 +218,7 @@
           <ScalarProperty Name="Yahoo" ColumnName="Yahoo" />
           <ScalarProperty Name="Facebook" ColumnName="Facebook" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -249,6 +249,7 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="C_ID" ColumnName="C_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

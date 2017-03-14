@@ -23,6 +23,7 @@ namespace TeduShop.Data
         public string ID { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
+        public Nullable<int> C_ID { get; set; }
     
         public virtual ICollection<PostTag> PostTags { get; set; }
         public virtual ICollection<ProductTag> ProductTags { get; set; }

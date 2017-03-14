@@ -225,6 +225,7 @@ namespace TeduShop.Service
                              tag.ID = TagId; ;
                              tag.Name = tags[i];
                              tag.Type = CommonConstants.ProductTag;
+                             tag.C_ID = IdProduct;
 
                              Connect_Enttity.Tags.Add(tag);
                              //Connect_Enttity.SaveChanges();
@@ -278,18 +279,19 @@ namespace TeduShop.Service
                     int IdProduct = model.ID;
 
                     DeleteOneProductTag(IdProduct);
-                    
+                    DeleteOneTag(IdProduct);
+
                     string[] tags = model.Tags.Split(',');
                     for (var i = 0; i < tags.Length; i++)
                     {
                         var TagId = StringHelper.ToUnsignString(tags[i]);
-                        DeleteOneTag(TagId);
                         if (Connect_Enttity.Tags.Count(x => x.ID == TagId) == 0)
                         {
                             Tag tag = new Tag();
                             tag.ID = TagId; ;
                             tag.Name = tags[i];
                             tag.Type = CommonConstants.ProductTag;
+                            tag.C_ID = IdProduct;
 
                             Connect_Enttity.Tags.Add(tag);
                             //Connect_Enttity.SaveChanges();
@@ -308,15 +310,23 @@ namespace TeduShop.Service
             }
         }
 
-        public void DeleteOneTag(string Id)
+        public void DeleteOneTag(int Id)
         {
+            var data = (from c in Connect_Enttity.Tags where c.C_ID == Id && c.Type == CommonConstants.ProductTag select c).ToList();
 
-            var data = (from c in Connect_Enttity.Tags where c.ID == Id select c).FirstOrDefault();
-
-            if (data != null)
+            if (data.Count > 0)
             {
-                Connect_Enttity.Tags.Remove(data);
-                Connect_Enttity.SaveChanges();
+                foreach (var row in data)
+                {
+                    var delete = (from c in Connect_Enttity.Tags where c.C_ID == row.C_ID && c.Type == CommonConstants.ProductTag select c).FirstOrDefault();
+                    if (delete != null)
+                    {
+                        Connect_Enttity.Tags.Remove(delete);
+                        Connect_Enttity.SaveChanges();
+                    }
+                }
+                
+                
             }
         }
         public void DeleteOneProductTag(int Id)
@@ -324,12 +334,15 @@ namespace TeduShop.Service
 
             var data = (from c in Connect_Enttity.ProductTags where c.productID == Id select c).ToList();
 
-            if (data != null)
+            if (data.Count > 0 )
             {
                 foreach ( var row in data)
                 {
                     var delete = (from c in Connect_Enttity.ProductTags where c.ID == row.ID select c).FirstOrDefault();
-                    Connect_Enttity.ProductTags.Remove(delete);
+                    if(delete != null)
+                    {
+                        Connect_Enttity.ProductTags.Remove(delete);
+                    }
                 }
                 Connect_Enttity.SaveChanges();
             }

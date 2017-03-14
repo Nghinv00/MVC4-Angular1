@@ -78,7 +78,16 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="image" ng-maxlength="500" ng-model="product.Image">
                         <span ng-show="frmUpdateProduct.image.$error.maxlength" class="has-error">Images chỉ được 500 ký tự</span>
-                        <button class="btn btn-default" id="imageChoose" type="button" ng-click="chooseImages()">chọn ảnh</button>
+                        <button class="btn btn-default" type="button" ng-click="chooseImages()">chọn ảnh</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Thêm ảnh</label>
+                    <div class="col-sm-10">
+                        <ul class="list-inline">
+                            <li ng-repeat="img in moreImages"><img src="{{img}}" width="100px" /></li>
+                        </ul>
+                        <button class="btn btn-default" type="button" ng-click="chooseMoreImages()">chọn ảnh</button>
                     </div>
                 </div>
                 <div class="form-group">
@@ -134,5 +143,4 @@
         </form>
     </div><!-- /.box -->
 </section><!-- /.content -->
-<!--Insert Custom Js get images of Ckfinder and blog of ckeditor-->
-<script src="/app/components/products/productcustom.js"></script>
+

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ShopOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="ShopOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="Errors">
           <Key>
             <PropertyRef Name="ID" />
@@ -238,6 +238,7 @@
           <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="C_ID" Type="int" />
         </EntityType>
         <EntityType Name="VisitorStatistics">
           <Key>
@@ -443,7 +444,8 @@
             <End Role="ProductTags" EntitySet="ProductTags" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ShopOnlineModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -492,9 +494,9 @@
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
           <NavigationProperty Name="ProductCategory" Relationship="Self.FK_OrderDetails_ProductCategories" FromRole="OrderDetails" ToRole="ProductCategories" />
-          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -511,8 +513,8 @@
           <Property Name="PaymentMethod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
           <Property Name="CustomerId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
         </EntityType>
         <EntityType Name="Page">
           <Key>
@@ -520,11 +522,11 @@
           </Key>
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MetaKeyword" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="MetaDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
-          <Property Name="Alias" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PostCategory">
           <Key>
@@ -628,9 +630,9 @@
           <Property Name="HomeFlag" Type="Boolean" />
           <Property Name="HotFlag" Type="Boolean" />
           <Property Name="ViewCount" Type="Int32" />
+          <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Products_ProductCategories" FromRole="Products" ToRole="ProductCategories" />
           <NavigationProperty Name="ProductTags" Relationship="Self.FK_ProductTags_Products" FromRole="Products" ToRole="ProductTags" />
-          <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ProductTag">
           <Key>
@@ -696,6 +698,7 @@
           <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_ID" Type="Int32" />
           <NavigationProperty Name="PostTags" Relationship="Self.FK_PostTags_Tags" FromRole="Tags" ToRole="PostTags" />
           <NavigationProperty Name="ProductTags" Relationship="Self.FK_ProductTags_Tags" FromRole="Tags" ToRole="ProductTags" />
         </EntityType>
@@ -961,17 +964,16 @@
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="ShopOnlineModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetails">
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="ShopOnlineModel.Order">
               <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
                 <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
@@ -983,15 +985,16 @@
                 <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
                 <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Pages">
             <EntityTypeMapping TypeName="ShopOnlineModel.Page">
               <MappingFragment StoreEntitySet="Pages">
-                <ScalarProperty Name="Alias" ColumnName="Alias" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
                 <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
@@ -1076,7 +1079,6 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="ShopOnlineModel.Product">
               <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="Tags" ColumnName="Tags" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Alias" ColumnName="Alias" />
@@ -1098,6 +1100,7 @@
                 <ScalarProperty Name="HomeFlag" ColumnName="HomeFlag" />
                 <ScalarProperty Name="HotFlag" ColumnName="HotFlag" />
                 <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1113,7 +1116,6 @@
           <EntitySetMapping Name="Slides">
             <EntityTypeMapping TypeName="ShopOnlineModel.Slide">
               <MappingFragment StoreEntitySet="Slides">
-                <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -1121,13 +1123,13 @@
                 <ScalarProperty Name="URL" ColumnName="URL" />
                 <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupportOnlines">
             <EntityTypeMapping TypeName="ShopOnlineModel.SupportOnline">
               <MappingFragment StoreEntitySet="SupportOnlines">
-                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
@@ -1137,6 +1139,7 @@
                 <ScalarProperty Name="Yahoo" ColumnName="Yahoo" />
                 <ScalarProperty Name="Facebook" ColumnName="Facebook" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1167,6 +1170,7 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="C_ID" ColumnName="C_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
